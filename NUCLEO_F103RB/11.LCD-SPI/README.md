@@ -45,6 +45,7 @@ GND - GND
 	- 구현 사진
 <img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/9a423c49-6c35-407d-bce0-fe0a4137e7e1" />
 <br>
+
 ## 전체 프로젝트 구성:
 
 ### 1. main.c (위 코드)
