@@ -1,11 +1,7 @@
 # LCD-SPI
-## 프로젝트 목표
-ST7735S LCD 디스플레이 모듈을 사용하여 디스플레이 출력
-- 구현 사진
-<img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/9a423c49-6c35-407d-bce0-fe0a4137e7e1" />
+
 
 ### 설명
-- NUCLEO-F103RB & ESP32 ARDUINO AI 보드 핀배치 맵
 <img width="540" height="540" alt="image" src="https://github.com/user-attachments/assets/7963a758-2c28-48f7-8737-02b0a484d5d3" />
 <img width="540" height="540" alt="image" src="https://github.com/user-attachments/assets/6ac17d94-14a6-48b0-b949-41543325cd20" />
 <img width="540" height="540" alt="image" src="https://github.com/user-attachments/assets/4475f95f-c72b-41ed-8904-0b82702d48d5" />
@@ -15,17 +11,10 @@ ST7735S LCD 디스플레이 모듈을 사용하여 디스플레이 출력
 
 
 
-```c
-BLK
-CS - 5 - PB6
-DC - 19 - PA6
-RES - 4 - PA1
-SDA - 23 - PA7
-SCL - 18 - PA5
-VCC
-GND
-```
+
 # LCD-SPI
+
+- NUCLEO-F103RB 보드 & ESP32 ARDUINO AI 보드 핀배치 맵
 
 <img width="600" height="400" alt="Sheild-001" src="https://github.com/user-attachments/assets/9df5b8c3-d81a-4026-9f86-67fa4dde1e38" />
 <br>
@@ -35,6 +24,10 @@ GND
 
 <img width="600" height="600" alt="F103RB-pin" src="https://github.com/user-attachments/assets/45bb557f-9517-419d-b45c-81a92869bac0" />
 <br>
+<br>
+<br>
+
+-ST7735S LCD 디스플레이 모듈 GPIO 핀배치
 
 ```
 BLK
@@ -57,6 +50,10 @@ SCL -  PA5
 VCC - 3.3V
 GND - GND
 ```
+## 프로젝트 목표
+ST7735S LCD 디스플레이 모듈을 사용하여 디스플레이 출력
+- 구현 사진
+<img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/9a423c49-6c35-407d-bce0-fe0a4137e7e1" />
 
 ## 전체 프로젝트 구성:
 
