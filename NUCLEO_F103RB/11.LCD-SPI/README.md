@@ -17,7 +17,7 @@
 <br>
 <br>
 
--ST7735S LCD 디스플레이 모듈 GPIO 핀배치
+- ST7735S LCD 디스플레이 모듈 GPIO 핀배치
 
 ```
 BLK
@@ -41,7 +41,7 @@ VCC - 3.3V
 GND - GND
 ```
 ## 프로젝트 목표
--ST7735S LCD 디스플레이 모듈을 사용하여 디스플레이 출력
+- ST7735S LCD 디스플레이 모듈을 사용하여 디스플레이 출력
 	- 구현 사진
 <img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/9a423c49-6c35-407d-bce0-fe0a4137e7e1" />
 <br>
