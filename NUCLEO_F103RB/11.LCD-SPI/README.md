@@ -2,7 +2,8 @@
 ## 프로젝트 목표
 ST7735S LCD 디스플레이 모듈을 사용하여 디스플레이 출력
 <p align="center">
-  <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/05c6495f-11d0-49e8-8d82-124635df8449" /> 
+  <img width="300" height="400" alt="image" src="https://github.com/user-attachments/assets/9a423c49-6c35-407d-bce0-fe0a4137e7e1" />
+
   <img width="1411" height="647" alt="image" src="https://github.com/user-attachments/assets/ff30cf24-8d32-4364-9126-68e13de03bf4" />
 
 
