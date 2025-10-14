@@ -1,1 +1,14 @@
-[README](https://private-user-images.githubusercontent.com/49811923/489271089-9df5b8c3-d81a-4026-9f86-67fa4dde1e38.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjA0MjYxMjUsIm5iZiI6MTc2MDQyNTgyNSwicGF0aCI6Ii80OTgxMTkyMy80ODkyNzEwODktOWRmNWI4YzMtZDgxYS00MDI2LTlmODYtNjdmYTRkZGUxZTM4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEwMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMDE0VDA3MTAyNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZiNDJiMWU1MGFjYmExZDM5ZTk3MWI1ZjgwZjVmMzM2NDYxZDJhNzk2NDk0ZjZkMzM0YWIxMTY5Zjc2YTRmOWImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.OzEKNI-OoQ7eY03yCcohqc8J0dQxfjo_NqCZxlMCqZw)
+<img width="1050" height="1400" alt="image" src="https://github.com/user-attachments/assets/05c6495f-11d0-49e8-8d82-124635df8449" />
+<img width="1786" height="1102" alt="image" src="https://github.com/user-attachments/assets/7963a758-2c28-48f7-8737-02b0a484d5d3" />
+<img width="1696" height="1242" alt="image" src="https://github.com/user-attachments/assets/6ac17d94-14a6-48b0-b949-41543325cd20" />
+<img width="644" height="586" alt="image" src="https://github.com/user-attachments/assets/4475f95f-c72b-41ed-8904-0b82702d48d5" />
+
+BLK
+CS - 5 - PB6
+DC - 19 - PA6
+RES - 4 - PA1
+SDA - 23 - PA7
+SCL - 18 - PA5
+VCC
+GND
+
