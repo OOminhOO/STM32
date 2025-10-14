@@ -1,16 +1,6 @@
 # LCD-SPI
 
 
-### 설명
-<img width="540" height="540" alt="image" src="https://github.com/user-attachments/assets/7963a758-2c28-48f7-8737-02b0a484d5d3" />
-<img width="540" height="540" alt="image" src="https://github.com/user-attachments/assets/6ac17d94-14a6-48b0-b949-41543325cd20" />
-<img width="540" height="540" alt="image" src="https://github.com/user-attachments/assets/4475f95f-c72b-41ed-8904-0b82702d48d5" />
-
-- IOC 설정
-  <img width="1411" height="647" alt="image" src="https://github.com/user-attachments/assets/ff30cf24-8d32-4364-9126-68e13de03bf4" />
-
-
-
 
 # LCD-SPI
 
@@ -97,6 +87,13 @@ STM32 CubeIDE에서 프로젝트의 main.c 파일을 위 코드로 교체하세�
       * "ST7735S" (시안색)
       * "80x160" (노란색)
 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <img width="800" height="600" alt="LCD-SPI" src="https://github.com/user-attachments/assets/beee2466-55d7-44cf-956a-0a860e1a189a" />
 <br>
 <img width="800" height="600" alt="LCD-SPI_008" src="https://github.com/user-attachments/assets/8acc11bd-f882-4708-a598-880511e50ea9" />
