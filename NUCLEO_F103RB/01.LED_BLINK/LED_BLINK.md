@@ -22,8 +22,8 @@ https://github.com/user-attachments/assets/7815f03f-7688-4da4-b877-ecaa8652235e
 #### 프로젝트 생성
 
 **STM32CubeIDE** 실행 후, 아래와 같이 File - New - STM32 Project 선택 
-
-![](.\img\stm32cube_ide_new_project.png)
+<img width="875" height="573" alt="image" src="https://github.com/user-attachments/assets/6c8c3c53-fd43-4eff-85dc-6697a09c49b9" />
+<br>
 
 
 
@@ -56,16 +56,13 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Co
 
 
 
-![](./img/device_config_tool.png)
 
 - **RCC 설정**
 
-RCC 설정을 위해 다음 그림과 같이 Device Configuration 창에서 Pinout & Configuration 탭의 System Core 항목 중 RCC를 선택 후 우측의 RCC Mode and Configuration 의 Mode의 High Speed Clock(HSE), Low Speed Clock(LSE) 모두 Disable로 변경한다.
-
-![](./img/system_core_rcc.png)
-
-
-
+RCC 설정을 위해 다음 그림과 같이 Device Configuration 창에서 Pinout & Configuration 탭의 System Core 항목 중 RCC를 선택 후 우측의 RCC Mode and Configuration 의 Mode의 High Speed Clock(HSE), Low Speed Clock(LSE) 모두 Disable로 변경한다.  
+<img width="1688" height="741" alt="image" src="https://github.com/user-attachments/assets/a1c05663-3c5f-492b-9852-5b6cd6911ad8" />  
+<br>
+<br>
 **클럭 설정 확인**
 
 Clock Configuration 화면에서
