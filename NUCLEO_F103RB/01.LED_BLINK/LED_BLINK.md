@@ -31,28 +31,47 @@ https://github.com/user-attachments/assets/7815f03f-7688-4da4-b877-ecaa8652235e
 
 Tafget Selection 윈도우가 나타나면 **Board Selector** 탭을 클릭한다.
 
+<br>
 <img width="1200" height="800" alt="image" src="https://github.com/user-attachments/assets/3960ff0f-8fa7-4002-9534-9af9f9ca96e7" />
 
-
+<br>
+<br>
+<br>
 Board selector 탭에서 **NUCLEO-F103RB** 검색  Board List에 **NUCLEO-F103RB**가 표시된다. 이를 선택 후, 하단의 Next > 버튼을 클릭한다.
 
+<br>
 <img width="1200" height="800" alt="image" src="https://github.com/user-attachments/assets/c5673109-e80d-4bfc-9aea-cb6043f8257c" />
 
-
+<br>
+<br>
+<br>
 STM32 Project 창이 나타나면 Project Name: 에 적당한 프로젝트 이름을 입력 후(예: LED_Blink) Finish 버튼을 클릭한다. 
 
+<br>
 <img width="500" height="600" alt="image" src="https://github.com/user-attachments/assets/50745ee0-67aa-478a-8ad8-f06da87e5c75" />
 
+<br>
+<br>
+<br>
 
 Board Project Options 대화창에서 Yes 버튼을 클릭한다.
+
+<br>
 <img width="500" height="140" alt="image" src="https://github.com/user-attachments/assets/d5b04334-ce35-46e0-aed3-1854412ed372" />
 
+<br>
+<br>
+<br>
 
 
 Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Configration Tool 창이 열린다.
 
+<br>
 <img width="500" height="140" alt="open_associated_perspective" src="https://github.com/user-attachments/assets/6a6a4353-f68e-4867-8a03-9bcd8062d709" />
 
+<br>
+<br>
+<br>
 
 
 
