@@ -67,54 +67,27 @@ RCC 설정을 위해 다음 그림과 같이 Device Configuration 창에서 Pino
 
 Clock Configuration 화면에서
 
-SYS_CLK이 64(MHz)로 설정되었는 지 확인한다.
-
-![](./img/clock_config.png)
-
+SYS_CLK이 64(MHz)로 설정되었는 지 확인한다.  
+<img width="1293" height="717" alt="image" src="https://github.com/user-attachments/assets/4f6b6678-ee13-44b7-9ba9-9f1061700c1f" />
+<br>
 
 
 - **GPIO 설정**
 
   PA5 핀에 대한 GPIO 설정을 위해 다음 그림과 같이 Device Configuration 창에서 Pinout View 탭의 CPU Pin 중 PA5를GPIO_OUTPUT로 변경후, Pinout & Configuration 탭의 PA5 Configuration의 GPIO Mode가 Output Push Pull인지 확인한다.
 
-  ![](./img/gpio_config.png)
+  <img width="1469" height="735" alt="image" src="https://github.com/user-attachments/assets/53c3b8de-a4f2-4e5f-a1dd-a76717a03d9d" />
 
-  
-  
+<br>
   지금까지의 설정을 반영한 코드 생성을 위해 Project 메뉴의 Generate Code 항목을 선택한다. 
-  
+  <img width="421" height="347" alt="image" src="https://github.com/user-attachments/assets/c1461db2-aaa1-49cf-aced-1fabe9235b2a" />
 
+<br>
 Open Associated Perspective 대화창에서 Yes 버튼을 클릭한다. 
+<img width="605" height="210" alt="open_associated_perspective (1)" src="https://github.com/user-attachments/assets/c23d7ae2-93b9-46b7-8e3e-e09bdbad62d1" />
+<br>
 
-![](./img/open_associated_perspective.png)
 
-
-
-<img width="520" height="350" alt="LED_Blinks_001" src="https://github.com/user-attachments/assets/3aa18d2c-5bc8-4d24-ae1f-898272f96bf9" />
-<br>
-<img width="1359" height="805" alt="LED_Blinks_002" src="https://github.com/user-attachments/assets/d2634652-6e5b-46be-bbb8-027a9d0f3c9b" />
-<br>
-<img width="402" height="51" alt="LED_Blinks_004" src="https://github.com/user-attachments/assets/6cf1078d-0d6a-4d3f-88b3-b3e46151b983" />
-<br>
-<img width="492" height="558" alt="LED_Blinks_005" src="https://github.com/user-attachments/assets/3197a10b-59cd-43e6-baa2-4d5f46a0e8a1" />
-<br>
-<img width="486" height="129" alt="LED_Blinks_006" src="https://github.com/user-attachments/assets/4d967a98-f423-4f2f-ac96-e863f1115848" />
-<br>
-<img width="1433" height="908" alt="LED_Blinks_007" src="https://github.com/user-attachments/assets/3df11327-4bef-41f6-8e77-d99d4d80d467" />
-<br>
-<img width="1433" height="908" alt="LED_Blinks_008" src="https://github.com/user-attachments/assets/d3133bc5-09d9-4b51-baec-290a8c229c6f" />
-<br>
-<img width="1433" height="908" alt="LED_Blinks_009" src="https://github.com/user-attachments/assets/401ce922-6baf-4321-a3eb-87b8bffff721" />
-<br>
-<img width="1433" height="908" alt="LED_Blinks_010" src="https://github.com/user-attachments/assets/f4b312b8-fa49-4413-bb46-4125ad84b26b" />
-<br>
-<img width="242" height="297" alt="LED_Blinks_011" src="https://github.com/user-attachments/assets/7bf0e956-97db-48b5-9856-d4a119fc7538" />
-<br>
-<img width="486" height="165" alt="LED_Blinks_012" src="https://github.com/user-attachments/assets/ca3e7a4a-8acc-4cfd-9905-e01ccbeb556c" />
-<br>
-<img width="1137" height="545" alt="LED_Blinks_013" src="https://github.com/user-attachments/assets/c4d741b9-39ba-41f5-9f5a-405e0d6c1157" />
-<br>
-<img width="1137" height="545" alt="LED_Blinks_014" src="https://github.com/user-attachments/assets/e0c09683-07a4-4a1b-8dd1-3e2f91cba259" /><br>
 
 
 * main.c
