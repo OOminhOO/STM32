@@ -47,12 +47,8 @@ Board Project Options 대화창에서 Yes 버튼을 클릭한다.
 <br>
 <br>
 Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Configration Tool 창이 열린다.
-
 <img width="500" height="140" alt="open_associated_perspective" src="https://github.com/user-attachments/assets/6a6a4353-f68e-4867-8a03-9bcd8062d709" />
 
-<br>
-<br>
-<br>
 
 
 
