@@ -1,4 +1,4 @@
-## 1. LED_Blink
+# 1. LED_Blink
 ## 프로그램 목표
 1초마다 LED를 깜박이게 하기
 <br>
