@@ -1,6 +1,8 @@
 ## 1. LED_Blink
-
-
+## 프로그램 목표
+1초마다 LED를 깜박이게 하기
+<br>
+- 구현 영상
 https://github.com/user-attachments/assets/7815f03f-7688-4da4-b877-ecaa8652235e
 
 
