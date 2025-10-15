@@ -83,13 +83,14 @@ SYS_CLK이 64(MHz)로 설정되었는 지 확인한다.
   <img width="421" height="347" alt="image" src="https://github.com/user-attachments/assets/c1461db2-aaa1-49cf-aced-1fabe9235b2a" />
 
 <br>
+  
 Open Associated Perspective 대화창에서 Yes 버튼을 클릭한다. 
 <img width="605" height="210" alt="open_associated_perspective (1)" src="https://github.com/user-attachments/assets/c23d7ae2-93b9-46b7-8e3e-e09bdbad62d1" />
 <br>
 
 
 
-
+* 이 과정을 완료하면 다음과 같은 코드가 만들어진
 * main.c
 ```c
   /* USER CODE BEGIN WHILE */
