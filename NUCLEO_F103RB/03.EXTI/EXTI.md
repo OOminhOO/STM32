@@ -106,74 +106,22 @@ VIC Mode and Configuration의 Code Generation 탭의 EXTI line[15:10]항목의 G
 <summary>펼치기/접기 코드</summary>
 
 생성된 코드에서 다음 부분을 수정한다.
-
-```c
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
-#include <stdio.h>
-#include <stdlib.h>
-/* USER CODE END Includes */
-```
-
 ```c
 /* USER CODE BEGIN 0 */
-
-#ifdef __GNUC__
-/* With GCC, small printf (option LD Linker->Libraries->Small printf
-   set to 'Yes') calls __io_putchar() */
-#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
-#else
-#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
-#endif /* __GNUC__ */
-
-/**
-  * @brief  Retargets the C library printf function to the USART.
-  * @param  None
-  * @retval None
-  */
-PUTCHAR_PROTOTYPE
+void
+HAL_GPIO_EXTI_Callback (uint16_t GPIO_Pin)
 {
-  /* Place your implementation of fputc here */
-  /* e.g. write a character to the USART1 and Loop until the end of transmission */
-  if (ch == '\n')
-    HAL_UART_Transmit (&huart2, (uint8_t*) "\r", 1, 0xFFFF);
-  HAL_UART_Transmit (&huart2, (uint8_t*) &ch, 1, 0xFFFF);
+	switch (GPIO_Pin)
+	{
+	case B1_Pin:
+		HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+		break;
 
-  return ch;
+	default:
+		;
+	}
 }
 /* USER CODE END 0 */
-```
-
-```c
-  /* USER CODE BEGIN 2 */
-  uint8_t ch;
-
-  /* USER CODE END 2 */
-```
-
-
-```c
-/* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-
-
-	  HAL_UART_Receive(&huart2, &ch, 1, HAL_MAX_DELAY);
-	  if(ch == '1'){
-	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 1);
-	  printf("[MCU]입력 : %c		led turn on \n", ch);
-	  }
-
-	  else if(ch == '0'){
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
-		  printf("[MCU]입력 : %c		led turn off \n", ch);
-	  }
-	  else{
-	  	  printf("[MCU]입력 : %c		0 또는 1을 입력하세요.\n", ch);
-
-	  }
-    /* USER CODE END WHILE */
 ```
 
 </details>
