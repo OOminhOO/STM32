@@ -1,4 +1,5 @@
 # 1. LED_Blink
+---
 ## 프로그램 목표
 GPIO 출력 기능을 이용한 LED 제어  
 1초마다 LED를 깜박이게 구현
@@ -9,7 +10,7 @@ https://github.com/user-attachments/assets/7815f03f-7688-4da4-b877-ecaa8652235e
 
 ---
 
-#### 개발환경
+### 개발환경
 
 **OS** MS-Windows 10(64bit)
 
@@ -19,7 +20,7 @@ https://github.com/user-attachments/assets/7815f03f-7688-4da4-b877-ecaa8652235e
 
 **참고문헌** STM32CubeIDE를 이용한 STM32 따라하기(주)북랩 김남수 ∙ 이진형 지음 
 
-#### 프로젝트 생성
+### 프로젝트 생성
 
 **STM32CubeIDE** 실행 후, 아래와 같이 File - New - STM32 Project 선택 
 <img width="875" height="573" alt="image" src="https://github.com/user-attachments/assets/6c8c3c53-fd43-4eff-85dc-6697a09c49b9" />
@@ -27,7 +28,7 @@ https://github.com/user-attachments/assets/7815f03f-7688-4da4-b877-ecaa8652235e
 
 
 
-#### Target 선택
+### Target 선택
 
 Tafget Selection 윈도우가 나타나면 **Board Selector** 탭을 클릭한다.  
 <img width="1200" height="800" alt="image" src="https://github.com/user-attachments/assets/3960ff0f-8fa7-4002-9534-9af9f9ca96e7" />
@@ -49,15 +50,14 @@ Board Project Options 대화창에서 Yes 버튼을 클릭한다.
 Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Configration Tool 창이 열린다.
 <img width="500" height="140" alt="open_associated_perspective" src="https://github.com/user-attachments/assets/6a6a4353-f68e-4867-8a03-9bcd8062d709" />
 
+---
 
 
+<details>
+<summary> ### Device Configuration Tool
+</summary>
 
-#### Device Configuration Tool
-
-
-
-
-- **RCC 설정**
+- 1. **RCC 설정**
 
 RCC 설정을 위해 다음 그림과 같이 Device Configuration 창에서 Pinout & Configuration 탭의 System Core 항목 중 RCC를 선택 후 우측의 RCC Mode and Configuration 의 Mode의 High Speed Clock(HSE), Low Speed Clock(LSE) 모두 Disable로 변경한다.  
 <img width="1688" height="741" alt="image" src="https://github.com/user-attachments/assets/a1c05663-3c5f-492b-9852-5b6cd6911ad8" />  
@@ -87,6 +87,9 @@ SYS_CLK이 64(MHz)로 설정되었는 지 확인한다.
 Open Associated Perspective 대화창에서 Yes 버튼을 클릭한다. 
 <img width="605" height="210" alt="open_associated_perspective (1)" src="https://github.com/user-attachments/assets/c23d7ae2-93b9-46b7-8e3e-e09bdbad62d1" />
 <br>
+
+</details>
+
 
 
 
