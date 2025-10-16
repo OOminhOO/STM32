@@ -63,7 +63,7 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Co
 
 ### Device Configuration
 <details>
-<summary>  **Device Configuration Tool**
+<summary>펼치기/접기  **Device Configuration Tool**
 </summary>
 
 1. **RCC 설정**
