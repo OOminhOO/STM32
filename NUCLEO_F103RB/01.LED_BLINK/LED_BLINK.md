@@ -24,7 +24,7 @@ https://github.com/user-attachments/assets/7815f03f-7688-4da4-b877-ecaa8652235e
 
 </details>
 
-
+---
 
 ### 프로젝트 생성
 <details>
@@ -66,13 +66,13 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Co
 <summary>  **Device Configuration Tool**
 </summary>
 
-- 1. **RCC 설정**
+**RCC 설정**
 
-RCC 설정을 위해 다음 그림과 같이 Device Configuration 창에서 Pinout & Configuration 탭의 System Core 항목 중 RCC를 선택 후 우측의 RCC Mode and Configuration 의 Mode의 High Speed Clock(HSE), Low Speed Clock(LSE) 모두 Disable로 변경한다.  
+1. RCC 설정을 위해 다음 그림과 같이 Device Configuration 창에서 Pinout & Configuration 탭의 System Core 항목 중 RCC를 선택 후 우측의 RCC Mode and Configuration 의 Mode의 High Speed Clock(HSE), Low Speed Clock(LSE) 모두 Disable로 변경한다.  
 <img width="1688" height="741" alt="image" src="https://github.com/user-attachments/assets/a1c05663-3c5f-492b-9852-5b6cd6911ad8" />  
 <br>
 <br>
-	- **클럭 설정 확인**
+  - **클럭 설정 확인**
 
 Clock Configuration 화면에서
 
@@ -81,7 +81,7 @@ SYS_CLK이 64(MHz)로 설정되었는 지 확인한다.
 <br>
 
 
-- 2. **GPIO 설정**
+2. **GPIO 설정**
 
   PA5 핀에 대한 GPIO 설정을 위해 다음 그림과 같이 Device Configuration 창에서 Pinout View 탭의 CPU Pin 중 PA5를GPIO_OUTPUT로 변경후, Pinout & Configuration 탭의 PA5 Configuration의 GPIO Mode가 Output Push Pull인지 확인한다.
 
@@ -89,6 +89,8 @@ SYS_CLK이 64(MHz)로 설정되었는 지 확인한다.
 
 
 </details>
+
+---
 
 ### CODE GENERATE
 <details>
