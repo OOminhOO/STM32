@@ -7,7 +7,7 @@
 <br>
 
 * 구현 영상
-
+ 
 
 https://github.com/user-attachments/assets/5ad0c667-d5e5-444b-8c83-0beb6ff4b30c
 
@@ -106,10 +106,10 @@ VIC Mode and Configuration의 Code Generation 탭의 EXTI line[15:10]항목의 G
 <summary>펼치기/접기 코드</summary>
 
 생성된 코드에서 다음 부분을 수정한다.
+
 ```c
 /* USER CODE BEGIN 0 */
-void
-HAL_GPIO_EXTI_Callback (uint16_t GPIO_Pin)
+void HAL_GPIO_EXTI_Callback (uint16_t GPIO_Pin)
 {
 	switch (GPIO_Pin)
 	{
