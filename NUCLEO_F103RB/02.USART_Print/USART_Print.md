@@ -85,6 +85,9 @@ USART2는 USB 케이블을 통한 시리얼 통신용 포트이다.
 <img width="1302" height="738" alt="image" src="https://github.com/user-attachments/assets/f2481e96-d28c-403b-be68-6773089456fc" />
 
 
+</details>
+
+
 ### 코드 작성 (기능 구현 코드)
 <details>
 <summary>펼치기/접기 코드</summary>
