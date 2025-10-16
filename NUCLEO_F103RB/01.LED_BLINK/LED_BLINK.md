@@ -61,7 +61,7 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Co
 
 ---
 
-### Device Configuration Tool
+### Device Configuration
 <details>
 <summary>  **Device Configuration Tool**
 </summary>
@@ -108,8 +108,9 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭한다.
 * 이 과정을 완료하면 다음과 같은 코드가 만들어진
 * main.c
 
-  <details>
+<details>
 <summary>펼치기/접기 main.c </summary>
+
 ```c
 /* USER CODE BEGIN Header */
 /**
@@ -358,7 +359,6 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-
 ```
 
 </details>
@@ -366,7 +366,7 @@ void assert_failed(uint8_t *file, uint32_t line)
 
 </details>
 
-
+<!--
 ```c
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -402,3 +402,4 @@ void assert_failed(uint8_t *file, uint32_t line)
     /* USER CODE BEGIN 3 */
   }
 ```
+-->
