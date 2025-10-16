@@ -408,15 +408,30 @@ void assert_failed(uint8_t *file, uint32_t line)
 ### 코드 수정 (기능 구현 코드)
 생성된 코드에서 다음 **USER CODE BEGIN WHILE** 부분을 다음과 같이 수정한다.
 ```c
-  /* USER CODE BEGIN WHILE */
+ /* USER CODE BEGIN WHILE */
+  // 메인 루프 시작
+  // 이 부분은 프로그램이 실행되는 동안 계속 반복 실행됨
   while (1)
   {
+	  // LED ON
+	  // LD2 핀(GPIO 핀)에 HIGH(1)를 출력하여 LED를 켠다.
 	  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 1);
+
+	  // 1초(1000ms) 동안 대기
 	  HAL_Delay(1000);
+
+	  // LED OFF
+	  // LD2 핀(GPIO 핀)에 LOW(0)를 출력하여 LED를 끈다.
 	  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 0);
+
+	  // 다시 1초 동안 대기
 	  HAL_Delay(1000);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    // 위 while 문은 무한 루프로 계속 실행되며
+    // 결과적으로 LED가 1초마다 켜졌다 꺼졌다 반복함.
   }
+/* USER CODE END 3 */
 ```
