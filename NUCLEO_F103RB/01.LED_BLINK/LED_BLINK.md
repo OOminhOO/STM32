@@ -405,7 +405,7 @@ void assert_failed(uint8_t *file, uint32_t line)
 -->
 
 ---
-### 코드 수정 (기능 구현 코드)
+### 코드 작성 (기능 구현 코드)
 생성된 코드에서 다음 **USER CODE BEGIN WHILE** 부분을 다음과 같이 수정한다.
 ```c
  /* USER CODE BEGIN WHILE */
