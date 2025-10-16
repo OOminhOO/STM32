@@ -72,7 +72,7 @@ RCC 설정을 위해 다음 그림과 같이 Device Configuration 창에서 Pino
 <img width="1688" height="741" alt="image" src="https://github.com/user-attachments/assets/a1c05663-3c5f-492b-9852-5b6cd6911ad8" />  
 <br>
 <br>
-  - **클럭 설정 확인**
+   - **클럭 설정 확인**
 
 Clock Configuration 화면에서
 
@@ -403,3 +403,20 @@ void assert_failed(uint8_t *file, uint32_t line)
   }
 ```
 -->
+
+---
+### 코드 수정 (기능 구현 코드)
+생성된 코드에서 다음 **USER CODE BEGIN WHILE** 부분을 다음과 같이 수정한다.
+```c
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+	  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 1);
+	  HAL_Delay(1000);
+	  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 0);
+	  HAL_Delay(1000);
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
+```
