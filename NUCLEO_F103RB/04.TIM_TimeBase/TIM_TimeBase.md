@@ -110,20 +110,41 @@ System Core 항목에서 NVIC을 선택하고, Configuration 의 NVIC탭에 NVIC
 생성된 코드에서 다음 부분을 수정한다.
 
 ```c
-/* USER CODE BEGIN 0 */
-void HAL_GPIO_EXTI_Callback (uint16_t GPIO_Pin)
-{
-	switch (GPIO_Pin)
-	{
-	case B1_Pin:
-		HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-		break;
+/* USER CODE BEGIN PV */
+// 타이머 인터럽트 발생 횟수를 저장할 전역 변수
+// volatile : 인터럽트 내에서 값이 변경되므로 최적화 방지
+volatile int gTimerCnt;
+/* USER CODE END PV */
+```
 
-	default:
-		;
+
+```c
+/* USER CODE BEGIN 2 */
+// TIM3 타이머를 인터럽트 모드로 시작
+// 설정된 주기마다 HAL_TIM_PeriodElapsedCallback() 함수가 자동 호출됨
+if(HAL_TIM_Base_Start_IT(&htim3) != HAL_OK)
+{
+  	  Error_Handler();   // 타이머 시작 실패 시 에러 처리
+}
+/* USER CODE END 2 */
+```
+
+```c
+/* USER CODE BEGIN 0 */
+// 타이머 주기마다 자동으로 호출되는 콜백 함수 (인터럽트 서비스 루틴)
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	gTimerCnt++;   // 인터럽트 발생 시마다 카운트 증가
+
+	// 인터럽트가 1000번 발생하면 (1ms × 1000 = 1초)
+	if(gTimerCnt == 1000)
+	{
+		gTimerCnt = 0;   // 카운트 초기화
+		HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);   // LED 상태 반전 (켜짐↔꺼짐)
 	}
 }
 /* USER CODE END 0 */
 ```
+
 
 </details>
