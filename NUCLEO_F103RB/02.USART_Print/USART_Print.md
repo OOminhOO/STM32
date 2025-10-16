@@ -11,6 +11,8 @@ USART통신을 이용하여 입력을 TERA TERM 통신 터미널에  PRINT
 
 https://github.com/user-attachments/assets/7c3f9dc2-faae-47c8-a281-0b467e92e2a0
 
+---
+
 ##   터미널 통신 프로그램 설치 (Tera Term)
 [https://github.com/TeraTermProject/teraterm/releases?authuser=0]
 
