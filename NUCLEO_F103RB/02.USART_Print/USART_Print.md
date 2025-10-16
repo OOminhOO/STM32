@@ -1,9 +1,9 @@
 # 1. LED_Blink
 ---
 ## 프로그램 목표
-USART통신을 이용하여 입력을 TERA TERM 통신 터미널에  PRINT 
-1 입력시 : LED TURN ON
-0 입력시 : LED TURN OFF
+USART통신을 이용하여 입력을 TERA TERM 통신 터미널에  PRINT   
+1 입력시 : LED TURN ON  
+0 입력시 : LED TURN OFF  
 
 <br>
 
