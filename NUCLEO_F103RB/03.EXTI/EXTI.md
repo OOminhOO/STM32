@@ -96,7 +96,7 @@ B1 스위치는 풀업 스위치이므로 스위치가 눌리지 않았을 때 H
 NVIC 탭에서 인터럽트 사용 설정할 경우 반드시 System Core의 NVIC에서 확인을 해봐야 한다. NVIC Mode and Configuration의 NVIC 탭의 EXTI line interrupts[15:10]에 체크하여 선택 후, NVIC Mode and Configuration의 탭의 EXTI line interrupts[15:10]
 <img width="1892" height="749" alt="image" src="https://github.com/user-attachments/assets/1a8f8e23-0945-477f-a41a-2fbe1dc5d774" />  
 <br>
-VIC Mode and Configuration의 Code Generation 탭의 EXTI line[15:10]항목의 Generate IRQ Handler 및 Call HAL handler에 체크.  
+NVIC Mode and Configuration의 Code Generation 탭의 EXTI line[15:10]항목의 Generate IRQ Handler 및 Call HAL handler에 체크.  
 <img width="986" height="739" alt="image" src="https://github.com/user-attachments/assets/085579bf-b479-4235-a904-3105427881dc" />  
 
 
