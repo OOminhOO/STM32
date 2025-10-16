@@ -79,7 +79,7 @@ RCC 설정을 위해 다음 그림과 같이 Device Configuration 창에서 Pino
 <br>
 <br>
 
-2. **GPIO 설정**
+2. **GPIO 설정**  
 B1 SW가 연결된 PC13은 외부 인터럽트 입력 (EXTI)으로 설정한다.  
 B1 스위치는 풀업 스위치이므로 스위치가 눌리지 않았을 때 HIGH가 입력되다가 스위치가 눌리면 LOW로 떨어지고, 스위치에서 손을 떼면 HIGH로 올라간다.  
 즉 누르는 순간에는 Falling Edge가 발생하고, 스위치에서 손을 떼는 순간에는 Rising Edge가 발생하므로 이 SW 를 누를 때 인터럽트를 발생시키기 위해 System Core-GPIO-GPIO Mode and Configuration의 GPIO탭의 PC13 설정을 Interrupt Mode with Falling Edge triger Detection으로 변경한다.  
