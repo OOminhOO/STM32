@@ -79,3 +79,8 @@ RCC 설정을 위해 다음 그림과 같이 Device Configuration 창에서 Pino
 <img width="1688" height="741" alt="image" src="https://github.com/user-attachments/assets/a1c05663-3c5f-492b-9852-5b6cd6911ad8" />  
 <br>
 <br>
+
+2. **USART 설정**
+USART2는 USB 케이블을 통한 시리얼 통신용 포트이다.
+<img width="1302" height="738" alt="image" src="https://github.com/user-attachments/assets/f2481e96-d28c-403b-be68-6773089456fc" />
+
