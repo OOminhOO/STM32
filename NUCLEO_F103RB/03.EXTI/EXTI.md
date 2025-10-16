@@ -87,7 +87,8 @@ B1 스위치는 풀업 스위치이므로 스위치가 눌리지 않았을 때 H
 <br>
 <br>
 
-3.  **NVIC**
+3.  **NVIC** 설정
+<br>
  이제 PC13 입력으로 인터럽트를 발생시키기 위해 GPIOMode and Configuration의 NVIC 탭에서 NVIC Interrupt Table항의 EXTI line[15:10] interrupts Enabled 에 체크한다.
 
 <img width="1890" height="766" alt="image" src="https://github.com/user-attachments/assets/6a5d033c-0007-4658-99f2-8587546eed66" />
