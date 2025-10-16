@@ -1,17 +1,17 @@
 # 1. LED_Blink
 ---
 ## 프로그램 목표
-USART를 이용하여 입력을 TERA TERM 터미널에  PRINT 
+USART통신을 이용하여 입력을 TERA TERM 통신 터미널에  PRINT 
 1 입력시 : LED TURN ON
 0 입력시 : LED TURN OFF
 
 <br>
-- 구현 영상
 
+* 구현 영상
 
 https://github.com/user-attachments/assets/7c3f9dc2-faae-47c8-a281-0b467e92e2a0
 
-##   * 터미널 통신 프로그램 설치 
+##   터미널 통신 프로그램 설치 (Tera Term)
 [https://github.com/TeraTermProject/teraterm/releases?authuser=0]
 
 ---
