@@ -85,8 +85,17 @@ B1 스위치는 풀업 스위치이므로 스위치가 눌리지 않았을 때 H
 즉 누르는 순간에는 Falling Edge가 발생하고, 스위치에서 손을 떼는 순간에는 Rising Edge가 발생하므로 이 SW 를 누를 때 인터럽트를 발생시키기 위해 System Core-GPIO-GPIO Mode and Configuration의 GPIO탭의 PC13 설정을 Interrupt Mode with Falling Edge triger Detection으로 변경한다.  
 <img width="1899" height="739" alt="image" src="https://github.com/user-attachments/assets/46e1df09-2aae-486e-8f0e-27026c667254" />
 
-  
-NVIC 활성
+3. **NVIC**    
+이제 PC13 입력으로 인터럽트를 발생시키기 위해 GPIOMode and Configuration의 NVIC 탭에서 NVIC Interrupt Table항의 EXTI line[15:10] interrupts Enabled 에 체크한다.
+<img width="1890" height="766" alt="image" src="https://github.com/user-attachments/assets/6a5d033c-0007-4658-99f2-8587546eed66" />
+
+NVIC 탭에서 인터럽트 사용 설정할 경우 반드시 System Core의 NVIC에서 확인을 해봐야 한다. NVIC Mode and Configuration의 NVIC 탭의 EXTI line interrupts[15:10]에 체크하여 선택 후, NVIC Mode and Configuration의 탭의 EXTI line interrupts[15:10]
+<img width="1892" height="749" alt="image" src="https://github.com/user-attachments/assets/1a8f8e23-0945-477f-a41a-2fbe1dc5d774" />  
+
+VIC Mode and Configuration의 Code Generation 탭의 EXTI line[15:10]항목의 Generate IRQ Handler 및 Call HAL handler에 체크.  
+<img width="986" height="739" alt="image" src="https://github.com/user-attachments/assets/085579bf-b479-4235-a904-3105427881dc" />  
+
+
 
 </details>
 
