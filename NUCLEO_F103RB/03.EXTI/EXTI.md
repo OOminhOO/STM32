@@ -82,7 +82,7 @@ RCC 설정을 위해 다음 그림과 같이 Device Configuration 창에서 Pino
 2. **GPIO 설정**  
 B1 SW가 연결된 PC13은 외부 인터럽트 입력 (EXTI)으로 설정한다.  
 B1 스위치는 풀업 스위치이므로 스위치가 눌리지 않았을 때 HIGH가 입력되다가 스위치가 눌리면 LOW로 떨어지고, 스위치에서 손을 떼면 HIGH로 올라간다.  
-즉 누르는 순간에는 Falling Edge가 발생하고, 스위치에서 손을 떼는 순간에는 Rising Edge가 발생하므로 이 SW 를 누를 때 인터럽트를 발생시키기 위해 System Core-GPIO-GPIO Mode and Configuration의 GPIO탭의 PC13 설정을 Interrupt Mode with Falling Edge triger Detection으로 변경한다.  
+즉 누르는 순간에는 Falling Edge가 발생하고, 스위치에서 손을 떼는 순간에는 Rising Edge가 발생하므로 이 SW 를 땔 때 인터럽트를 발생시키기 위해 System Core-GPIO-GPIO Mode and Configuration의 GPIO탭의 PC13 설정을 Interrupt Mode with Rising Edge triger Detection으로 변경한다.  
 <img width="1899" height="739" alt="image" src="https://github.com/user-attachments/assets/46e1df09-2aae-486e-8f0e-27026c667254" />
 
 3. **NVIC**    
@@ -106,6 +106,7 @@ VIC Mode and Configuration의 Code Generation 탭의 EXTI line[15:10]항목의 G
 <summary>펼치기/접기 코드</summary>
 
 생성된 코드에서 다음 부분을 수정한다.
+
 ```c
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
