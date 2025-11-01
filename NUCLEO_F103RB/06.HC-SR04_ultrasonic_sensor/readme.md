@@ -8,7 +8,7 @@ HC-SR04 초음파 센서 모듈을 이용하여 대상 물체까지의 거리(cm
 <br>
 
 * 구현 영상
-<img width="392" height="258" alt="126" src="https://github.com/user-attachments/assets/00230408-09ac-4b1c-a794-f1aadc8087e6" />
+<img width="995" height="550" alt="hc_sr40_003" src="https://github.com/user-attachments/assets/43f8cc02-e8e5-496e-8031-85a921506eee" />
 <br>
 
 
@@ -18,7 +18,8 @@ HC-SR04 초음파 센서 모듈을 이용하여 대상 물체까지의 거리(cm
 <details>
 <summary>펼치기/접기 **Pictures** </summary>
 
-
+<img width="392" height="258" alt="126" src="https://github.com/user-attachments/assets/00230408-09ac-4b1c-a794-f1aadc8087e6" />
+<br>
 <img width="600" height="480" alt="shield-001" src="https://github.com/user-attachments/assets/4c7f5dc6-ffe6-4f62-bcb1-376dc55e13a9" />
 <br>
 <img width="600" height="480" alt="shield-002" src="https://github.com/user-attachments/assets/e67d445b-c3b0-483c-92b6-4100a39a662e" />
