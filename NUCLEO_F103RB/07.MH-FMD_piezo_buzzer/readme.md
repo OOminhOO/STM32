@@ -10,8 +10,9 @@
 
 ---
 
-## MH-FMD 
-<img width="644" height="586" alt="F103RB-pin" src="https://github.com/user-attachments/assets/774d7903-5392-4df3-b8da-f16d6996ea9c" />
+## MH-FMD & board pin map
+
+<img width="358" height="278" alt="127" src="https://github.com/user-attachments/assets/4ec83cb3-fcac-45a0-b27c-9221ebe30de6" />
 <br>
 <img width="644" height="586" alt="F103RB-pin" src="https://github.com/user-attachments/assets/774d7903-5392-4df3-b8da-f16d6996ea9c" />
 <br>
