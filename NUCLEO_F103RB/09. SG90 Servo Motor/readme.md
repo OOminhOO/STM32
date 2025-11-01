@@ -34,19 +34,7 @@ timer의 pwm기능을 이용하여 서보모터 제어
 <summary>펼치기/접기  </summary>
 
 $$
-f_{timer} = \frac{64{,}000{,}000}{1280} = 50{,}000\,\mathrm{Hz}
-$$
-
-카운트 주파수 = 50 kHz
-
-Tick 주기:
-$$
 \frac{1}{50{,}000} = 20\,\mu\mathrm{s}
-$$
-
-### 3. PWM 주기
-$$
-T_{\mathrm{PWM}} = \frac{\mathrm{Period}+1}{f_{\mathrm{timer}}} = \frac{1000}{50{,}000} = 0.02\,\mathrm{s} = 20\,\mathrm{ms}
 $$
 
 ## 1. 기본 조건
