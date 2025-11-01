@@ -109,6 +109,22 @@ void SG90_SetAngle(uint8_t angle)
     __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, ccr_val);
 }
 ```
+
+---
+
+## 8. 사용 예시
+```c
+SG90_SetAngle(0);    // 0도
+HAL_Delay(1000);
+
+SG90_SetAngle(90);   // 90도
+HAL_Delay(1000);
+
+SG90_SetAngle(180);  // 180도
+HAL_Delay(1000);
+```
+
+
 </details>
 
   
