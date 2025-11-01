@@ -26,6 +26,7 @@ CLCD에 글자 디스플레이 및 I2C 연결확
 <img width="644" height="586" alt="F103RB-pin" src="https://github.com/user-attachments/assets/5a174c00-4edc-4481-a59f-00297ecf229d" />
 <br><br>
 </details>
+
 ---
 
 ### 개발환경
@@ -57,6 +58,8 @@ CLCD에 글자 디스플레이 및 I2C 연결확
 **STM32CubeIDE** 실행 후, 아래와 같이 File - New - STM32 Project 선택 
 <img width="875" height="573" alt="image" src="https://github.com/user-attachments/assets/6c8c3c53-fd43-4eff-85dc-6697a09c49b9" />
 <br>
+
+---
 
 #### Target 선택
 
