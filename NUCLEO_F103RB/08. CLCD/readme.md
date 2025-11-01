@@ -187,11 +187,7 @@ void I2C_ScanAddresses(void) {
 ```
 
 
----
-CLCD "Hello World!"
----
 
-<img width="800" height="600" alt="CLCD" src="https://github.com/user-attachments/assets/a590d783-9ded-40ba-b23d-ce6f93a5b430" />
 
 ```c
 /* USER CODE BEGIN Includes */
