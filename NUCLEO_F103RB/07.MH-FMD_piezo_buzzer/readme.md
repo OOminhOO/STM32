@@ -86,6 +86,7 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Co
 <img width="1688" height="741" alt="image" src="https://github.com/user-attachments/assets/a1c05663-3c5f-492b-9852-5b6cd6911ad8" />  
 <br>
 <br>
+
 ### 타이머 설정 (TIM1):
    * Timers → TIM1 → Clock Source: Internal Clock
    * Channel1 → PWM Generation CH1
