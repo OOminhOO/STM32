@@ -17,7 +17,7 @@ STM32F103RB ADC1의 Temerature Sensor 채널에 연결된 내부의 온도센서
 <details>
 <summary>펼치기/접기 **개발환경** </summary>
 
-**OS** MS-Windows 10(64bit)
+**OS** MS-Windows 11(64bit)
 
 **Target** STM32 NUCLEO F103RB
 
