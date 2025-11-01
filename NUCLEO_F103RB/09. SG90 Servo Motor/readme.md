@@ -42,7 +42,7 @@ timer의 pwm기능을 이용하여 서보모터 제어
 
 ## 2. 타이머 카운트 주파수
 $$
-f_{timer} = \frac{64,000,000}{1280} = 50,000 \,\text{Hz}
+$$ f_{timer} = \frac{64,000,000}{1280} = 50,000 \,\text{Hz} $$
 $$
 
 - 카운트 주파수 = **50 kHz**  
@@ -55,7 +55,7 @@ $$
 
 ## 3. PWM 주기
 $$
-T_{PWM} = \frac{Period + 1}{f_{timer}} = \frac{1000}{50,000} = 0.02 \, s = 20 \, ms
+T_{\mathrm{PWM}} = \frac{\mathrm{Period}+1}{f_{\mathrm{timer}}} = \frac{1000}{50{,}000} = 0.02\,\mathrm{s} = 20\,\mathrm{ms}
 $$
 
 ✅ 따라서 PWM 주기 = **20 ms (50 Hz)** → SG90 서보 요구사항과 일치  
@@ -149,22 +149,6 @@ HAL_Delay(1000);
 
 ---
 
-
-
-## 8. 사용 예시
-```c
-SG90_SetAngle(0);    // 0도
-HAL_Delay(1000);
-
-SG90_SetAngle(90);   // 90도
-HAL_Delay(1000);
-
-SG90_SetAngle(180);  // 180도
-HAL_Delay(1000);
-```
-
-</details>
----  
 
 
 
