@@ -165,8 +165,8 @@ ADC Clock에 문제가 있을 경우 Clock Configuration 탭에 표시 이상이
 
 
 지금까지 진행한 의 설정을 반영한 코드 생성하기 위해 Project 메뉴의 Generate Code 메뉴를 선택한다. 
+<img width="1920" height="1049" alt="image" src="https://github.com/user-attachments/assets/5086e930-4e98-4a60-9f69-ba293ccca6bf" />
 
-![](./img/generate_code.png)
 </details>
 
 ---
