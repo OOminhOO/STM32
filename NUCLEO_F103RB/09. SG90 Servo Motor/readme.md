@@ -21,116 +21,10 @@ timer의 pwm기능을 이용하여 서보모터 제어
 <img width="644" height="586" alt="F103RB-pin" src="https://github.com/user-attachments/assets/23e365b4-1bdf-4074-9724-d795ea1da5b7" />
 <br>
 
-## 1. 기본 조건
-- **타이머 클럭** = 64 MHz  
-- **Prescaler** = 1280 - 1 = 1279  
-- **Period** = 1000 - 1 = 999  
-
----
-
-## 2. 타이머 카운트 주파수
-$$
-f_{timer} = \frac{64,000,000}{1280} = 50,000 \,\text{Hz}
-$$
-
-- 카운트 주파수 = **50 kHz**  
-- Tick 주기:  
-$$
-\frac{1}{50,000} = 20 \,\mu s
-$$
-
----
-
-## 3. PWM 주기
-$$
-T_{PWM} = \frac{Period + 1}{f_{timer}} = \frac{1000}{50,000} = 0.02 \, s = 20 \, ms
-$$
-
-✅ 따라서 PWM 주기 = **20 ms (50 Hz)** → SG90 서보 요구사항과 일치  
-
----
-
-## 4. 펄스 폭 (CCR 값으로 각도 제어)
-
-- **1 ms** 펄스 폭  
-$$\frac{1 \, \text{ms}}{20 \, \mu\text{s}} = 50 \quad \Rightarrow \quad \text{CCR} = 50$$
-
-- **1.5 ms** 펄스 폭  
-$$\frac{1.5 \, \text{ms}}{20 \, \mu\text{s}} = 75 \quad \Rightarrow \quad \text{CCR} = 75$$
-
-- **2 ms** 펄스 폭  
-$$\frac{2 \, \text{ms}}{20 \, \mu\text{s}} = 100 \quad \Rightarrow \quad \text{CCR} = 100$$
-
----
-
-## 5. 요약
-- Prescaler = **1279**, Period = **999** → 정확히 **50 Hz (20 ms)** PWM 생성  
-- CCR 값 50 ~ 100 사이로 설정하여 SG90 서보 각도 (0°~180°) 제어 가능  
-
----
-
-## 6. 각도별 CCR 값
-- 0° → 1 ms → CCR = 50  
-- 90° → 1.5 ms → CCR = 75  
-- 180° → 2 ms → CCR = 100  
-
-```c
-// 0도
-__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 50);
-
-// 90도
-__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 75);
-
-// 180도
-__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 100);
-```
-
----
-
-## 7. 각도를 일반화한 함수
-```c
-void SG90_SetAngle(uint8_t angle)
-{
-    // angle: 0 ~ 180도
-    // CCR: 50(1ms) ~ 100(2ms)
-    uint32_t ccr_val = 50 + ((angle * (100 - 50)) / 180);
-    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, ccr_val);
-}
-```
-
----
-
-## 8. 사용 예시
-```c
-SG90_SetAngle(0);    // 0도
-HAL_Delay(1000);
-
-SG90_SetAngle(90);   // 90도
-HAL_Delay(1000);
-
-SG90_SetAngle(180);  // 180도
-HAL_Delay(1000);
-```
 
 </details>
 
----
-
-### 개발환경
-<details>
-<summary>펼치기/접기 **개발환경** </summary>
-
-**OS** MS-Windows 11(64bit)
-
-**Target** STM32 NUCLEO F103RB
-
-**IDE** STM32 Cube IDE
-
-**참고문헌** STM32CubeIDE를 이용한 STM32 따라하기(주)북랩 김남수 ∙ 이진형 지음 
-
-</details>
-
----
+---  
 
 
 
@@ -215,8 +109,31 @@ void SG90_SetAngle(uint8_t angle)
     __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, ccr_val);
 }
 ```
+</details>
+
+  
+---  
+
+
+
+
+### 개발환경
+<details>
+<summary>펼치기/접기 **개발환경** </summary>
+
+**OS** MS-Windows 11(64bit)
+
+**Target** STM32 NUCLEO F103RB
+
+**IDE** STM32 Cube IDE
+
+**참고문헌** STM32CubeIDE를 이용한 STM32 따라하기(주)북랩 김남수 ∙ 이진형 지음 
+
+</details>
 
 ---
+
+
 
 ## 8. 사용 예시
 ```c
