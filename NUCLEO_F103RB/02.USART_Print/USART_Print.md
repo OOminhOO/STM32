@@ -22,7 +22,7 @@ https://github.com/user-attachments/assets/7c3f9dc2-faae-47c8-a281-0b467e92e2a0
 <details>
 <summary>펼치기/접기 **개발환경** </summary>
 
-**OS** MS-Windows 10(64bit)
+**OS** MS-Windows 11(64bit)
 
 **Target** STM32 NUCLEO F103RB
 
