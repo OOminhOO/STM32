@@ -218,6 +218,11 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Co
 
 생성된 코드에서 다음 부분을 수정한다.
 
+----
+
+   * TIM2_CH1 - PA0
+   * TIM3_CH1 - PA6
+
 ```c
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
@@ -225,9 +230,18 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Co
 ```
 
 ```c
-/* USER CODE BEGIN PFP */
-void I2C_ScanAddresses(void);
-/* USER CODE END PFP */
+/* USER CODE BEGIN PD */
+#define MAX 125  // 2.5ms pulse width (최대 각도)
+#define MIN 25   // 0.5ms pulse width (최소 각도)
+#define CENTER 75 // 1.5ms pulse width (중앙 각도)
+#define STEP 1
+/* USER CODE END PD */
+
+/* USER CODE BEGIN PV */
+uint8_t ch;
+uint8_t pos_pan = 75;
+uint8_t pos_tilt = 75;
+/* USER CODE END PV */
 ```
 
 ```c
@@ -255,40 +269,84 @@ PUTCHAR_PROTOTYPE
 
   return ch;
 }
-
-void I2C_ScanAddresses(void) {
-    HAL_StatusTypeDef result;
-    uint8_t i;
-
-
-    printf("Scanning I2C addresses...\r\n");
-
-
-    for (i = 1; i < 128; i++) {
-        /*
-         * HAL_I2C_IsDeviceReady: If a device at the specified address exists return HAL_OK.
-         * Since I2C devices must have an 8-bit address, the 7-bit address is shifted left by 1 bit.
-         */
-        result = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(i << 1), 1, 10);
-        if (result == HAL_OK) {
-            printf("I2C device found at address 0x%02X\r\n", i);
-        }
-    }
-
-
-    printf("Scan complete.\r\n");
-}
-
-/* USER CODE END 0 */
 ```
 
 ```c
   /* USER CODE BEGIN 2 */
-  I2C_ScanAddresses();
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+
+  // 초기 위치 설정
+  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, pos_pan);
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pos_tilt);
+
+  printf("Servo Control Ready\r\n");
+  printf("Commands: w(up), s(down), a(left), d(right), i(center)\r\n");
   /* USER CODE END 2 */
 ```
 
+```c
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+    if(HAL_UART_Receive(&huart2, &ch, sizeof(ch), 10) == HAL_OK)
+    {
+      if(ch == 's')
+      {
+        printf("Down\r\n");
+        if(pos_tilt + STEP <= MAX)
+          pos_tilt = pos_tilt + STEP;
+        else
+          pos_tilt = MAX;
+      }
+      else if(ch == 'w')
+      {
+        printf("Up\r\n");
+        if(pos_tilt - STEP >= MIN)
+          pos_tilt = pos_tilt - STEP;
+        else
+          pos_tilt = MIN;
+      }
+      else if(ch == 'a')
+      {
+        printf("Left\r\n");
+        if(pos_pan + STEP <= MAX)
+          pos_pan = pos_pan + STEP;
+        else
+          pos_pan = MAX;
+      }
+      else if(ch == 'd')
+      {
+        printf("Right\r\n");
+        if(pos_pan - STEP >= MIN)
+          pos_pan = pos_pan - STEP;
+        else
+          pos_pan = MIN;
+      }
+      else if(ch == 'i')
+      {
+        printf("Center\r\n");
+        pos_pan = CENTER;
+        pos_tilt = CENTER;
+      }
 
+      // PWM 듀티 사이클 업데이트
+      __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, pos_pan);
+      __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pos_tilt);
+
+      printf("Pan: %d, Tilt: %d\r\n", pos_pan, pos_tilt);
+
+      HAL_Delay(50); // 서보 응답 시간
+    }
+
+    /* USER CODE END WHILE */
+```
+
+---
+# 각도표시
+---
+
+<img width="995" height="550" alt="servo_result" src="https://github.com/user-attachments/assets/c42adba2-96aa-4ff5-a119-5044486adb6e" />
 
 
 ```c
@@ -299,43 +357,25 @@ void I2C_ScanAddresses(void) {
 
 ```c
 /* USER CODE BEGIN PD */
-#define delay_ms HAL_Delay
-
-#define ADDRESS   0x3F << 1
-//#define ADDRESS   0x27 << 1
-
-#define RS1_EN1   0x05
-#define RS1_EN0   0x01
-#define RS0_EN1   0x04
-#define RS0_EN0   0x00
-#define BackLight 0x08
+#define MAX 125      // 2.5ms pulse width (180도)
+#define MIN 25       // 0.5ms pulse width (0도)
+#define CENTER 75    // 1.5ms pulse width (90도)
+#define STEP 5       // 이동 단위
 /* USER CODE END PD */
 ```
 
 ```c
 /* USER CODE BEGIN PV */
-int delay = 0;
-int value = 0;
+uint8_t ch;
+uint8_t pos_pan = CENTER;
+uint8_t pos_tilt = CENTER;
 /* USER CODE END PV */
 ```
 
 ```c
-/* Private function prototypes -----------------------------------------------*/
-void SystemClock_Config(void);
-static void MX_GPIO_Init(void);
-static void MX_USART2_UART_Init(void);
-static void MX_I2C1_Init(void);
 /* USER CODE BEGIN PFP */
-void I2C_ScanAddresses(void);
-
-void delay_us(int us);
-void LCD_DATA(uint8_t data);
-void LCD_CMD(uint8_t cmd);
-void LCD_CMD_4bit(uint8_t cmd);
-void LCD_INIT(void);
-void LCD_XY(char x, char y);
-void LCD_CLEAR(void);
-void LCD_PUTS(char *str);
+uint16_t pwm_to_angle(uint8_t pwm_value);
+void display_servo_status(uint8_t pan, uint8_t tilt);
 /* USER CODE END PFP */
 ```
 
@@ -365,112 +405,119 @@ PUTCHAR_PROTOTYPE
   return ch;
 }
 
-void I2C_ScanAddresses(void) {
-    HAL_StatusTypeDef result;
-    uint8_t i;
-
-    printf("Scanning I2C addresses...\r\n");
-
-    for (i = 1; i < 128; i++) {
-        /*
-         * HAL_I2C_IsDeviceReady: If a device at the specified address exists return HAL_OK.
-         * Since I2C devices must have an 8-bit address, the 7-bit address is shifted left by 1 bit.
-         */
-        result = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(i << 1), 1, 10);
-        if (result == HAL_OK) {
-            printf("I2C device found at address 0x%02X\r\n", i);
-        }
-    }
-
-    printf("Scan complete.\r\n");
+/**
+  * @brief  PWM 값을 각도로 변환하는 함수
+  * @param  pwm_value: PWM 듀티 사이클 값 (25~125)
+  * @retval 각도 값 (0~1800, 실제 각도 x 10)
+  */
+uint16_t pwm_to_angle(uint8_t pwm_value)
+{
+  // PWM 25~125 범위를 0~180도로 변환
+  // 소수점 계산을 위해 10배로 확대 (0~1800)
+  // 공식: angle = (pwm_value - 25) * 1800 / (125 - 25)
+  return ((uint16_t)(pwm_value - MIN) * 1800) / (MAX - MIN);
 }
 
-void delay_us(int us){
-	value = 3;
-	delay = us * value;
-	for(int i=0;i < delay;i++);
-}
-
-void LCD_DATA(uint8_t data) {
-	uint8_t temp=(data & 0xF0)|RS1_EN1|BackLight;
-
-	while(HAL_I2C_Master_Transmit(&hi2c1, ADDRESS, &temp, 1, 1000)!=HAL_OK);
-	temp=(data & 0xF0)|RS1_EN0|BackLight;
-	while(HAL_I2C_Master_Transmit(&hi2c1, ADDRESS, &temp, 1, 1000)!=HAL_OK);
-	delay_us(4);
-
-	temp=((data << 4) & 0xF0)|RS1_EN1|BackLight;
-	while(HAL_I2C_Master_Transmit(&hi2c1, ADDRESS, &temp, 1, 1000)!=HAL_OK);
-	temp = ((data << 4) & 0xF0)|RS1_EN0|BackLight;
-	while(HAL_I2C_Master_Transmit(&hi2c1, ADDRESS, &temp, 1, 1000)!=HAL_OK);
-	delay_us(50);
-}
-
-void LCD_CMD(uint8_t cmd) {
-	uint8_t temp=(cmd & 0xF0)|RS0_EN1|BackLight;
-	while(HAL_I2C_Master_Transmit(&hi2c1, ADDRESS, &temp, 1, 1000)!=HAL_OK);
-	temp=(cmd & 0xF0)|RS0_EN0|BackLight;
-	while(HAL_I2C_Master_Transmit(&hi2c1, ADDRESS, &temp, 1, 1000)!=HAL_OK);
-	delay_us(4);
-
-	temp=((cmd << 4) & 0xF0)|RS0_EN1|BackLight;
-	while(HAL_I2C_Master_Transmit(&hi2c1, ADDRESS, &temp, 1, 1000)!=HAL_OK);
-	temp=((cmd << 4) & 0xF0)|RS0_EN0|BackLight;
-	while(HAL_I2C_Master_Transmit(&hi2c1, ADDRESS, &temp, 1, 1000)!=HAL_OK);
-	delay_us(50);
-}
-
-void LCD_CMD_4bit(uint8_t cmd) {
-	uint8_t temp=((cmd << 4) & 0xF0)|RS0_EN1|BackLight;
-	while(HAL_I2C_Master_Transmit(&hi2c1, ADDRESS, &temp, 1, 1000)!=HAL_OK);
-	temp=((cmd << 4) & 0xF0)|RS0_EN0|BackLight;
-	while(HAL_I2C_Master_Transmit(&hi2c1, ADDRESS, &temp, 1, 1000)!=HAL_OK);
-	delay_us(50);
-}
-
-void LCD_INIT(void) {
-
-	delay_ms(100);
-
-	LCD_CMD_4bit(0x03); delay_ms(5);
-	LCD_CMD_4bit(0x03); delay_us(100);
-	LCD_CMD_4bit(0x03); delay_us(100);
-	LCD_CMD_4bit(0x02); delay_us(100);
-	LCD_CMD(0x28);  // 4 bits, 2 line, 5x8 font
-	LCD_CMD(0x08);  // display off, cursor off, blink off
-	LCD_CMD(0x01);  // clear display
-	delay_ms(3);
-	LCD_CMD(0x06);  // cursor movint direction
-	LCD_CMD(0x0C);  // display on, cursor off, blink off
-}
-
-void LCD_XY(char x, char y) {
-	if      (y == 0) LCD_CMD(0x80 + x);
-	else if (y == 1) LCD_CMD(0xC0 + x);
-	else if (y == 2) LCD_CMD(0x94 + x);
-	else if (y == 3) LCD_CMD(0xD4 + x);
-}
-
-void LCD_CLEAR(void) {
-	LCD_CMD(0x01);
-	delay_ms(2);
-}
-
-void LCD_PUTS(char *str) {
-	while (*str) LCD_DATA(*str++);
+/**
+  * @brief  서보모터 상태를 화면에 출력하는 함수
+  * @param  pan: Pan 서보 PWM 값
+  * @param  tilt: Tilt 서보 PWM 값
+  * @retval None
+  */
+void display_servo_status(uint8_t pan, uint8_t tilt)
+{
+  uint16_t pan_angle = pwm_to_angle(pan);
+  uint16_t tilt_angle = pwm_to_angle(tilt);
+  
+  printf("Pan: %3d (%3d.%d°) | Tilt: %3d (%3d.%d°)\r\n", 
+         pan, pan_angle/10, pan_angle%10,
+         tilt, tilt_angle/10, tilt_angle%10);
 }
 /* USER CODE END 0 */
 ```
 
 ```c
   /* USER CODE BEGIN 2 */
-  I2C_ScanAddresses();
-
-  LCD_INIT();
-  LCD_XY(0, 0) ; LCD_PUTS((char *)"LCD Display test");
-  LCD_XY(0, 1) ; LCD_PUTS((char *)"Hello World.....");
-
+  // PWM 시작
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+  
+  // 초기 위치 설정
+  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, pos_pan);
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pos_tilt);
+  
+  printf("\r\n=== SG90 Servo Control System ===\r\n");
+  printf("Commands: w(up), s(down), a(left), d(right), i(center)\r\n");
+  printf("Initial Position:\r\n");
+  display_servo_status(pos_pan, pos_tilt);
+  printf("Ready!\r\n\r\n");
   /* USER CODE END 2 */
+
+```
+
+```c
+ /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+    if(HAL_UART_Receive(&huart2, &ch, sizeof(ch), 10) == HAL_OK)
+    {
+      // 명령 처리
+      if(ch == 's')  // Down
+      {
+        printf("Command: Down\r\n");
+        if(pos_tilt + STEP <= MAX) 
+          pos_tilt = pos_tilt + STEP;
+        else 
+          pos_tilt = MAX;
+      }
+      else if(ch == 'w')  // Up
+      {
+        printf("Command: Up\r\n");
+        if(pos_tilt - STEP >= MIN) 
+          pos_tilt = pos_tilt - STEP;
+        else 
+          pos_tilt = MIN;
+      }
+      else if(ch == 'a')  // Left
+      {
+        printf("Command: Left\r\n");
+        if(pos_pan + STEP <= MAX)	
+          pos_pan = pos_pan + STEP;
+        else 
+          pos_pan = MAX;
+      }
+      else if(ch == 'd')  // Right
+      {
+        printf("Command: Right\r\n");
+        if(pos_pan - STEP >= MIN)	
+          pos_pan = pos_pan - STEP;
+        else 
+          pos_pan = MIN;
+      }
+      else if(ch == 'i')  // Center
+      {
+        printf("Command: Center\r\n");
+        pos_pan = CENTER;
+        pos_tilt = CENTER;
+      }
+      else
+      {
+        printf("Invalid command: %c\r\n", ch);
+        continue;  // 잘못된 명령이면 PWM 업데이트 하지 않음
+      }
+
+      // PWM 듀티 사이클 업데이트
+      __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, pos_pan);
+      __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pos_tilt);
+      
+      // 상태 출력 (pwm_to_angle 함수 실제 사용됨)
+      display_servo_status(pos_pan, pos_tilt);
+      
+      HAL_Delay(50); // 서보 응답 시간
+    }
+    
+    /* USER CODE END WHILE */
 ```
 
 </details>
