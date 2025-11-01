@@ -89,7 +89,8 @@ RCC 다음에 설정할  **`peripheral`**은 **USART2**(Universal Synchronous AS
 
 - NUCLEO-F103RB 타겟보드는 3개의 USART(USART1, USART2, USART3)가 지원된다. 그 중 USB 포트에 바로 연결된 장치가 USART2이므로 USART2 장치를 표준 출력장치로 설정하여 printf() 함수로 출력한 내용이 시리얼로 출력되도록 USART2를 설정한다. 먼저 Device Configuration 창에서 Pinout & Configuration 탭의 Conectivity 항목 중 USART2를 선택 후 우측의 USART Mode snd Configuration 의 Mode를 Asynchronous로, Hardware Flow Control(RS232)을 Disable로 변경한다. 
 
-  ![](./img/usart2_mode_config.png)
+<img width="1920" height="1042" alt="image" src="https://github.com/user-attachments/assets/243e49c1-e14f-4907-ad2c-62f7edeb190a" />
+
 
 
 
@@ -101,7 +102,8 @@ USART2  Parameter Settings
 
 한다.
 
-![](./img/usart2_ParameterSettings.png)
+<img width="1920" height="1042" alt="image" src="https://github.com/user-attachments/assets/04ef1775-9973-44d3-bd13-53a7d0a24bf6" />
+
 
 
 
@@ -109,7 +111,7 @@ USART2 NVIC Settings
 
 NVIC Settings 탭을 선택하고, USART2 Global Interrupt항목의 Enabled를 체크한다.
 
-![](./img/usart2_nvic_config.png)
+<img width="1920" height="1042" alt="image" src="https://github.com/user-attachments/assets/6e1a9518-8926-47b8-ac1b-5d4d1cecac20" />
 
 
 
@@ -119,7 +121,8 @@ USART 다음에 설정할  **`peripheral`**은 **NVIC**(Nested Vector Interrupt 
 
 System Core 항목에서 NVIC을 선택하고, USART2 Global Interrupt 항목의 체크를 해제한다.
 
-![](./img/usart2_nvic_config2.png)
+<img width="1920" height="1042" alt="image" src="https://github.com/user-attachments/assets/a5335143-737b-4f0a-857f-f99704be44f4" />
+
 
 
 3. **ADC1 설정**
@@ -127,22 +130,24 @@ System Core 항목에서 NVIC을 선택하고, USART2 Global Interrupt 항목의
   Pinout & Configuration탭의 Analog의 하위항목 중 ADC1을 선택한다.  ADC1 Mode and Configuration의 Mode에서 Temperature Sensor Channel을 체크, Configuration의 Parameter Settings 탭에서 Mode 는 Independent mode, Data Alignment는 Right Alignment, Scan Conversion Mode는 Disabled, Continuous Conversion Mode는 Enabled, Discontinuous Coversion Mode는 Disabled, Enable Regular Coversions는 Enable, Number of Conversion은 1, Rank는 1, Enable Injected Conversions는 Disable로 설정하고. 
 
   
-  
-  ![](./img/adc_mode_n_config.png)
+  <img width="1919" height="1042" alt="image" src="https://github.com/user-attachments/assets/d2092926-6fe1-47bf-9bdb-ef5dcfe48292" />
+
 
 `>`RANK 앞의 `<` 를 클릭하면 나타나는 Sampling Time은 13.5 Cycle 로 설정한다.  그리고 나서 클럭 설정 확인을 위해 Clock Configuration 탭을 클릭하면클럭 설정 문제와 자동 설정으로 해결하려면 원하는 버튼을 클릭하라는 대화창이 나타나는데, 여기서 YES 버튼을 클릭한다. 
 
-![](./img/auto_clock_issue_solver.png)
+<img width="584" height="307" alt="image" src="https://github.com/user-attachments/assets/5a18a0ed-cb8c-43e1-b58f-fca63f7f5115" />
 
 
 
 ADC Clock에 문제가 있을 경우 Clock Configuration 탭에 표시 이상이 있음이 표시(적색 화살표  참조)되고, 동시에 우측 하단에 ADC1, 2 클럭에 문제가 있음이 표시된다. 
+<img width="1920" height="1008" alt="image" src="https://github.com/user-attachments/assets/9b39d79e-387d-47ea-9f04-f727fafacbf7" />
 
-![](./img/resolve_clock_issue1.png)
+
 
 이 때 상단의 Resolve Clock Issue 버튼을 클릭하면 클럭 설정이 적당한 값으로변경되어 Clock Issue가 해결된다. 
 
-![](./img/resolve_clock_issue2.png)
+<img width="1920" height="1008" alt="image" src="https://github.com/user-attachments/assets/af64d136-14cb-4368-b825-8e3ba9fd967d" />
+
 
 
   
