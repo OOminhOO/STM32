@@ -110,12 +110,23 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Co
 <br>
 
   
-### 타이머 pwm 설정  
+### 타이머 설정  
+<STM 타이머 종류><br>
+ 
+| 구분 | **타이머 이름** | **종류** | **특징** |
+|------|------------------|-----------|-----------|
+| **TIM1** | Advanced-control Timer | **고급 제어용** | PWM + Dead time + Complementary Output (모터 제어용) |
+| **TIM2** | General-purpose Timer | **일반용** | 32-bit 카운터 (시간 측정/기본 PWM용) |
+| **TIM3** | General-purpose Timer | **일반용** | 16-bit, 여러 PWM 채널 제어 가능 |
+| **TIM4** | General-purpose Timer | **일반용** | 16-bit, PWM이나 인터럽트 타이밍용 |
 
-<img width="800" height="608" alt="SERVO_003" src="https://github.com/user-attachments/assets/a6ca154d-6616-407b-9e77-ab1566bb1a80" />
-<br>
-<img width="800" height="608" alt="SERVO_004" src="https://github.com/user-attachments/assets/f20ec8df-36e9-42e1-8671-6223fc108338" />
-<br>
+- TIM2 사용: DHT11은 **HIGH 신호의 길이로 0과 1을 표현**하기 때문에 MCU는 타이머를 써서 HIGH 지속 시간을 측정<br>
+<img width="1845" height="807" alt="image" src="https://github.com/user-attachments/assets/6e183f12-ac71-4f00-9e99-6a2deea2f137" /><br>
+- 기본조건 **(타이머 클럭= 64MHx/ Prescaler= 64-1/ Period= 65535)**<br>
+- Prescaler와 Counter Period 설정값에 의해 타이머 인터럽트의 발생 주기 결정<br>
+  => Prescarler를63로 설정: 타이머 공급(64,000,000Hz)/63= **1M Hz 클럭** 공급<br>
+                           : 1u초에 1 클럭<br>
+  => Counter Period를 65535으로 설정: 인터럽트 주기 1/1,000,000초 * 65535= 약 15Hz(T= 약 65ms) <br>
 
 
 </details>
