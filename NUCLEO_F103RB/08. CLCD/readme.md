@@ -5,7 +5,7 @@
 
 ---
 ## 프로그램 목표
-CLCD에 글자 디스플레이 및 I2C 연결확
+CLCD에 글자 디스플레이 및 I2C 연결확인
 * 구현 사진
 <img width="800" height="600" alt="CLCD" src="https://github.com/user-attachments/assets/a590d783-9ded-40ba-b23d-ce6f93a5b430" />
 <br>
