@@ -194,8 +194,8 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Co
 RGB → BGR로 컬러 순서 보정(MADCTL=0x68): LCD_DrawString의 색상값과 패널 실제 순서 불일치로 빨/파가 바뀌던 문제 해결.   
 
 INVON 활성화: ST7735 패널 구동 극성(인버전) 맞춤으로 휘도/대비·색감 안정화(OFF면 색 틀어짐·플리커).  
-
-
+<br>
+<br>
 // 1) 반전: ON  
 
 // LCD_WriteCommand(ST7735_INVOFF);  
