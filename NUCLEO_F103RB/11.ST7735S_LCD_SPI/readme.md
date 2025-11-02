@@ -26,7 +26,9 @@ ST77955LCD를 SPI통해 화면 디스플레
 <br>
 
 <img width="306" height="233" alt="132" src="https://github.com/user-attachments/assets/7f6424ec-fb5b-441d-ab0e-0a9dc575bf6c" />
-<br>
+<br>  
+
+  
 ```
 BLK
 CS - 5 - PB6
@@ -37,6 +39,8 @@ SCL - 18 - PA5
 VCC
 GND
 ```
+
+  
 
 ```
 BLK -  NC
@@ -139,6 +143,8 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Co
 <img width="1688" height="741" alt="image" src="https://github.com/user-attachments/assets/a1c05663-3c5f-492b-9852-5b6cd6911ad8" />  
 <br>
 <br>
+
+### CLOCK , SPI, GPIO 설정
 
  * System Clock: HSE 8MHz → PLL × 8 = 64MHz
     * SPI1 활성화:
