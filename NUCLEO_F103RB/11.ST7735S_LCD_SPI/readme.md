@@ -5,7 +5,7 @@
 
 ---
 ## 프로그램 목표
-ST77955LCD를 SPI통해 화면 디스플레
+ST77955LCD를 SPI통해 화면 디스플레이
 * 구현 사진
 <img width="800" height="600" alt="LCD-SPI" src="https://github.com/user-attachments/assets/beee2466-55d7-44cf-956a-0a860e1a189a" />
 <br>
