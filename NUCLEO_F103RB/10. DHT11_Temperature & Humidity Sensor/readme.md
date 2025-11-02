@@ -127,6 +127,10 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Co
   => Prescarler를63로 설정: 타이머 공급(64,000,000Hz)/63= **1M Hz 클럭** 공급<br>
                            : 1u초에 1 클럭<br>
   => Counter Period를 65535으로 설정: 인터럽트 주기 1/1,000,000초 * 65535= 약 15Hz(T= 약 65ms) <br>
+    #### 03) 핀 패정
+:코드로 GPIOA0 **하나의 포트로 Input, Output의 역할을 모두**해야 됨.<br>
+포트를 ioc에서 열지 않고 DHT11_SetPinOutput(), DHT11_SetPinInput()으로 설정<br>
+  
 
 
 </details>
@@ -141,162 +145,51 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Co
 
 ----
 
-   * TIM2_CH1 - PA0
-   * TIM3_CH1 - PA6
 
 ```c
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include <string.h>
 /* USER CODE END Includes */
 ```
 
 ```c
-/* USER CODE BEGIN PD */
-#define MAX 125  // 2.5ms pulse width (최대 각도)
-#define MIN 25   // 0.5ms pulse width (최소 각도)
-#define CENTER 75 // 1.5ms pulse width (중앙 각도)
-#define STEP 1
-/* USER CODE END PD */
-
-/* USER CODE BEGIN PV */
-uint8_t ch;
-uint8_t pos_pan = 75;
-uint8_t pos_tilt = 75;
-/* USER CODE END PV */
-```
-
-```c
-/* USER CODE BEGIN 0 */
-#ifdef __GNUC__
-/* With GCC, small printf (option LD Linker->Libraries->Small printf
-   set to 'Yes') calls __io_putchar() */
-#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
-#else
-#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
-#endif /* __GNUC__ */
-
-/**
-  * @brief  Retargets the C library printf function to the USART.
-  * @param  None
-  * @retval None
-  */
-PUTCHAR_PROTOTYPE
-{
-  /* Place your implementation of fputc here */
-  /* e.g. write a character to the USART1 and Loop until the end of transmission */
-  if (ch == '\n')
-    HAL_UART_Transmit (&huart2, (uint8_t*) "\r", 1, 0xFFFF);
-  HAL_UART_Transmit (&huart2, (uint8_t*) &ch, 1, 0xFFFF);
-
-  return ch;
-}
-```
-
-```c
-  /* USER CODE BEGIN 2 */
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-
-  // 초기 위치 설정
-  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, pos_pan);
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pos_tilt);
-
-  printf("Servo Control Ready\r\n");
-  printf("Commands: w(up), s(down), a(left), d(right), i(center)\r\n");
-  /* USER CODE END 2 */
-```
-
-```c
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-    if(HAL_UART_Receive(&huart2, &ch, sizeof(ch), 10) == HAL_OK)
-    {
-      if(ch == 's')
-      {
-        printf("Down\r\n");
-        if(pos_tilt + STEP <= MAX)
-          pos_tilt = pos_tilt + STEP;
-        else
-          pos_tilt = MAX;
-      }
-      else if(ch == 'w')
-      {
-        printf("Up\r\n");
-        if(pos_tilt - STEP >= MIN)
-          pos_tilt = pos_tilt - STEP;
-        else
-          pos_tilt = MIN;
-      }
-      else if(ch == 'a')
-      {
-        printf("Left\r\n");
-        if(pos_pan + STEP <= MAX)
-          pos_pan = pos_pan + STEP;
-        else
-          pos_pan = MAX;
-      }
-      else if(ch == 'd')
-      {
-        printf("Right\r\n");
-        if(pos_pan - STEP >= MIN)
-          pos_pan = pos_pan - STEP;
-        else
-          pos_pan = MIN;
-      }
-      else if(ch == 'i')
-      {
-        printf("Center\r\n");
-        pos_pan = CENTER;
-        pos_tilt = CENTER;
-      }
-
-      // PWM 듀티 사이클 업데이트
-      __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, pos_pan);
-      __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pos_tilt);
-
-      printf("Pan: %d, Tilt: %d\r\n", pos_pan, pos_tilt);
-
-      HAL_Delay(50); // 서보 응답 시간
-    }
-
-    /* USER CODE END WHILE */
-```
-
----
-# 각도표시
----
-
-<img width="995" height="550" alt="servo_result" src="https://github.com/user-attachments/assets/c42adba2-96aa-4ff5-a119-5044486adb6e" />
-
-
-```c
-/* USER CODE BEGIN Includes */
-#include <stdio.h>
-/* USER CODE END Includes */
+/* USER CODE BEGIN PTD */
+typedef struct {
+    uint8_t temperature;
+    uint8_t humidity;
+    uint8_t temp_decimal;
+    uint8_t hum_decimal;
+    uint8_t checksum;
+} DHT11_Data;
+/* USER CODE END PTD */
 ```
 
 ```c
 /* USER CODE BEGIN PD */
-#define MAX 125      // 2.5ms pulse width (180도)
-#define MIN 25       // 0.5ms pulse width (0도)
-#define CENTER 75    // 1.5ms pulse width (90도)
-#define STEP 5       // 이동 단위
+#define DHT11_PORT GPIOA
+#define DHT11_PIN GPIO_PIN_0
 /* USER CODE END PD */
 ```
 
 ```c
 /* USER CODE BEGIN PV */
-uint8_t ch;
-uint8_t pos_pan = CENTER;
-uint8_t pos_tilt = CENTER;
+DHT11_Data dht11_data;
+char uart_buffer[100];  // uart_buffer 변수 선언 추가
 /* USER CODE END PV */
 ```
 
 ```c
 /* USER CODE BEGIN PFP */
-uint16_t pwm_to_angle(uint8_t pwm_value);
-void display_servo_status(uint8_t pan, uint8_t tilt);
+void DHT11_SetPinOutput(void);
+void DHT11_SetPinInput(void);
+void DHT11_SetPin(GPIO_PinState state);
+GPIO_PinState DHT11_ReadPin(void);
+void DHT11_DelayUs(uint32_t us);
+uint8_t DHT11_Start(void);
+uint8_t DHT11_ReadBit(void);
+uint8_t DHT11_ReadByte(void);
+uint8_t DHT11_ReadData(DHT11_Data *data);
 /* USER CODE END PFP */
 ```
 
@@ -326,119 +219,155 @@ PUTCHAR_PROTOTYPE
   return ch;
 }
 
-/**
-  * @brief  PWM 값을 각도로 변환하는 함수
-  * @param  pwm_value: PWM 듀티 사이클 값 (25~125)
-  * @retval 각도 값 (0~1800, 실제 각도 x 10)
-  */
-uint16_t pwm_to_angle(uint8_t pwm_value)
-{
-  // PWM 25~125 범위를 0~180도로 변환
-  // 소수점 계산을 위해 10배로 확대 (0~1800)
-  // 공식: angle = (pwm_value - 25) * 1800 / (125 - 25)
-  return ((uint16_t)(pwm_value - MIN) * 1800) / (MAX - MIN);
+// DHT11 함수 구현
+void DHT11_SetPinOutput(void) {
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+    GPIO_InitStruct.Pin = DHT11_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(DHT11_PORT, &GPIO_InitStruct);
 }
 
-/**
-  * @brief  서보모터 상태를 화면에 출력하는 함수
-  * @param  pan: Pan 서보 PWM 값
-  * @param  tilt: Tilt 서보 PWM 값
-  * @retval None
-  */
-void display_servo_status(uint8_t pan, uint8_t tilt)
-{
-  uint16_t pan_angle = pwm_to_angle(pan);
-  uint16_t tilt_angle = pwm_to_angle(tilt);
-  
-  printf("Pan: %3d (%3d.%d°) | Tilt: %3d (%3d.%d°)\r\n", 
-         pan, pan_angle/10, pan_angle%10,
-         tilt, tilt_angle/10, tilt_angle%10);
+void DHT11_SetPinInput(void) {
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+    GPIO_InitStruct.Pin = DHT11_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    HAL_GPIO_Init(DHT11_PORT, &GPIO_InitStruct);
+}
+
+void DHT11_SetPin(GPIO_PinState state) {
+    HAL_GPIO_WritePin(DHT11_PORT, DHT11_PIN, state);
+}
+
+GPIO_PinState DHT11_ReadPin(void) {
+    return HAL_GPIO_ReadPin(DHT11_PORT, DHT11_PIN);
+}
+
+void DHT11_DelayUs(uint32_t us) {
+    __HAL_TIM_SET_COUNTER(&htim2, 0);
+    while (__HAL_TIM_GET_COUNTER(&htim2) < us);
+}
+
+uint8_t DHT11_Start(void) {
+    uint8_t response = 0;
+
+    // 출력 모드로 설정
+    DHT11_SetPinOutput();
+
+    // 시작 신호 전송 (18ms LOW)
+    DHT11_SetPin(GPIO_PIN_RESET);
+    HAL_Delay(20);  // 18ms -> 20ms로 변경 (더 안정적)
+
+    // HIGH로 변경 후 20-40us 대기
+    DHT11_SetPin(GPIO_PIN_SET);
+    DHT11_DelayUs(30);
+
+    // 입력 모드로 변경
+    DHT11_SetPinInput();
+
+    // DHT11 응답 확인 (80us LOW + 80us HIGH)
+    DHT11_DelayUs(40);
+
+    if (!(DHT11_ReadPin())) {
+        DHT11_DelayUs(80);
+        if (DHT11_ReadPin()) {
+            response = 1;
+        } else {
+            response = 0;
+        }
+    }
+
+    // HIGH가 끝날 때까지 대기
+    while (DHT11_ReadPin());
+
+    return response;
+}
+
+uint8_t DHT11_ReadBit(void) {
+    // LOW 신호가 끝날 때까지 대기 (50us)
+    while (!(DHT11_ReadPin()));
+
+    // HIGH 신호 시작 후 30us 대기
+    DHT11_DelayUs(30);
+
+    // 여전히 HIGH면 1, LOW면 0
+    if (DHT11_ReadPin()) {
+        // HIGH가 끝날 때까지 대기
+        while (DHT11_ReadPin());
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+uint8_t DHT11_ReadByte(void) {
+    uint8_t byte = 0;
+    for (int i = 0; i < 8; i++) {
+        byte = (byte << 1) | DHT11_ReadBit();
+    }
+    return byte;
+}
+
+uint8_t DHT11_ReadData(DHT11_Data *data) {
+    if (!DHT11_Start()) {
+        return 0; // 시작 신호 실패
+    }
+
+    // 5바이트 데이터 읽기
+    data->humidity = DHT11_ReadByte();
+    data->hum_decimal = DHT11_ReadByte();
+    data->temperature = DHT11_ReadByte();
+    data->temp_decimal = DHT11_ReadByte();
+    data->checksum = DHT11_ReadByte();
+
+    // 체크섬 확인
+    uint8_t calculated_checksum = data->humidity + data->hum_decimal +
+                                 data->temperature + data->temp_decimal;
+
+    if (calculated_checksum == data->checksum) {
+        return 1; // 성공
+    } else {
+        return 0; // 체크섬 오류
+    }
 }
 /* USER CODE END 0 */
 ```
 
 ```c
   /* USER CODE BEGIN 2 */
-  // PWM 시작
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-  
-  // 초기 위치 설정
-  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, pos_pan);
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pos_tilt);
-  
-  printf("\r\n=== SG90 Servo Control System ===\r\n");
-  printf("Commands: w(up), s(down), a(left), d(right), i(center)\r\n");
-  printf("Initial Position:\r\n");
-  display_servo_status(pos_pan, pos_tilt);
-  printf("Ready!\r\n\r\n");
-  /* USER CODE END 2 */
 
+  // 타이머 시작 (마이크로초 단위 지연용)
+  HAL_TIM_Base_Start(&htim2);
+
+  // UART 초기화 메시지
+  sprintf(uart_buffer, "DHT11 Temperature & Humidity Sensor Test\r\n");
+  HAL_UART_Transmit(&huart2, (uint8_t*)uart_buffer, strlen(uart_buffer), HAL_MAX_DELAY);
+
+  /* USER CODE END 2 */
 ```
 
 ```c
- /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-    if(HAL_UART_Receive(&huart2, &ch, sizeof(ch), 10) == HAL_OK)
-    {
-      // 명령 처리
-      if(ch == 's')  // Down
-      {
-        printf("Command: Down\r\n");
-        if(pos_tilt + STEP <= MAX) 
-          pos_tilt = pos_tilt + STEP;
-        else 
-          pos_tilt = MAX;
-      }
-      else if(ch == 'w')  // Up
-      {
-        printf("Command: Up\r\n");
-        if(pos_tilt - STEP >= MIN) 
-          pos_tilt = pos_tilt - STEP;
-        else 
-          pos_tilt = MIN;
-      }
-      else if(ch == 'a')  // Left
-      {
-        printf("Command: Left\r\n");
-        if(pos_pan + STEP <= MAX)	
-          pos_pan = pos_pan + STEP;
-        else 
-          pos_pan = MAX;
-      }
-      else if(ch == 'd')  // Right
-      {
-        printf("Command: Right\r\n");
-        if(pos_pan - STEP >= MIN)	
-          pos_pan = pos_pan - STEP;
-        else 
-          pos_pan = MIN;
-      }
-      else if(ch == 'i')  // Center
-      {
-        printf("Command: Center\r\n");
-        pos_pan = CENTER;
-        pos_tilt = CENTER;
-      }
-      else
-      {
-        printf("Invalid command: %c\r\n", ch);
-        continue;  // 잘못된 명령이면 PWM 업데이트 하지 않음
-      }
+	    /* USER CODE BEGIN 3 */
 
-      // PWM 듀티 사이클 업데이트
-      __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, pos_pan);
-      __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pos_tilt);
-      
-      // 상태 출력 (pwm_to_angle 함수 실제 사용됨)
-      display_servo_status(pos_pan, pos_tilt);
-      
-      HAL_Delay(50); // 서보 응답 시간
-    }
-    
-    /* USER CODE END WHILE */
+	    if (DHT11_ReadData(&dht11_data)) {
+	      // 데이터 읽기 성공
+	      sprintf(uart_buffer, "Temperature: %d°C, Humidity: %d%%\r\n",
+	              dht11_data.temperature, dht11_data.humidity);
+	      HAL_UART_Transmit(&huart2, (uint8_t*)uart_buffer, strlen(uart_buffer), HAL_MAX_DELAY);
+	    } else {
+	      // 데이터 읽기 실패
+	      sprintf(uart_buffer, "DHT11 Read Error!\r\n");
+	      HAL_UART_Transmit(&huart2, (uint8_t*)uart_buffer, strlen(uart_buffer), HAL_MAX_DELAY);
+	    }
+
+	    // 2초 대기 (DHT11은 최소 2초 간격으로 읽어야 함)
+	    HAL_Delay(2000);
+
+	  }
+	  /* USER CODE END 3 */
 ```
+
 
 </details>
