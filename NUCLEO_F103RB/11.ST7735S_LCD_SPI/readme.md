@@ -185,6 +185,24 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Co
       * "ST7735S" (시안색)
       * "80x160" (노란색)
 
+
+#### 아래코드에서 수정 필요 
+원하는 함수 기능을 맟춰주기 위해서 
+LCD_DrawString(x, y, "출력할 문자열", 글자색, 배경색);  
+RGB → BGR로 컬러 순서 보정(MADCTL=0x68): LCD_DrawString의 색상값과 패널 실제 순서 불일치로 빨/파가 바뀌던 문제 해결.  
+INVON 활성화: ST7735 패널 구동 극성(인버전) 맞춤으로 휘도/대비·색감 안정화(OFF면 색 틀어짐·플리커).  
+
+
+
+// 1) 반전: ON
+// LCD_WriteCommand(ST7735_INVOFF);
+LCD_WriteCommand(ST7735_INVON);
+
+// 2) 색 순서: BGR 켜기
+LCD_WriteCommand(ST7735_MADCTL);
+// LCD_WriteData(0x60);   // (기존) MX=1, MV=1, BGR=0 (RGB)
+LCD_WriteData(0x68);      // (변경) MX=1, MV=1, BGR=1 (BGR)
+
   
 
 생성된 코드에서 다음 부분을 수정한다.
