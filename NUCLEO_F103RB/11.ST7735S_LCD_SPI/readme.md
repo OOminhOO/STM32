@@ -196,26 +196,24 @@ RGB → BGR로 컬러 순서 보정(MADCTL=0x68): LCD_DrawString의 색상값과
 INVON 활성화: ST7735 패널 구동 극성(인버전) 맞춤으로 휘도/대비·색감 안정화(OFF면 색 틀어짐·플리커).  
 
 
-
-
 // 1) 반전: ON  
 
 // LCD_WriteCommand(ST7735_INVOFF);  
 
-LCD_WriteCommand(ST7735_INVON);  
-
-
-  
+**LCD_WriteCommand(ST7735_INVON);**  
+<br>
+<br>
 // 2) 색 순서: BGR 켜기  
 
 LCD_WriteCommand(ST7735_MADCTL);  
 
 // LCD_WriteData(0x60);   // (기존) MX=1, MV=1, BGR=0 (RGB)  
 
-LCD_WriteData(0x68);      // (변경) MX=1, MV=1, BGR=1 (BGR)
+**LCD_WriteData(0x68);**      // (변경) MX=1, MV=1, BGR=1 (BGR)
 
   
-
+<br>
+<br>
 생성된 코드에서 다음 부분을 수정한다.
 
 ----
