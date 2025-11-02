@@ -426,7 +426,8 @@ void EEPROM_Test(void)
 <summary>펼치기/접기  2개의 Addredd 관련 이슈</summary>
 
 
-<br>
+<br>  
+
 ```
 === I2C Address Scan ===
 Scanning I2C bus...
@@ -436,6 +437,7 @@ Found I2C device at address: 0xB0 (7-bit: 0x58)
 Total 2 I2C device(s) found.
 ========================
 ```
+
 
 ### 2개의 블럭이 서로 연관이 있는것인지, 각각의 영역을 다 사용할 수 있는것인지 확인.
 
