@@ -198,13 +198,20 @@ INVON 활성화: ST7735 패널 구동 극성(인버전) 맞춤으로 휘도/대�
 
 
 
-// 1) 반전: ON
-// LCD_WriteCommand(ST7735_INVOFF);
-LCD_WriteCommand(ST7735_INVON);
+// 1) 반전: ON  
 
-// 2) 색 순서: BGR 켜기
-LCD_WriteCommand(ST7735_MADCTL);
-// LCD_WriteData(0x60);   // (기존) MX=1, MV=1, BGR=0 (RGB)
+// LCD_WriteCommand(ST7735_INVOFF);  
+
+LCD_WriteCommand(ST7735_INVON);  
+
+
+  
+// 2) 색 순서: BGR 켜기  
+
+LCD_WriteCommand(ST7735_MADCTL);  
+
+// LCD_WriteData(0x60);   // (기존) MX=1, MV=1, BGR=0 (RGB)  
+
 LCD_WriteData(0x68);      // (변경) MX=1, MV=1, BGR=1 (BGR)
 
   
