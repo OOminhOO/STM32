@@ -5,7 +5,7 @@
 
 ---
 ## 프로그램 목표
-ST77955LCD를 SPI통해 화면 디스플레이
+I²C EEPROM(K24C256)에 바이트·페이지 쓰기/읽기를 구현하고, ACK 폴링과 순차 읽기로 검증하여 전원 재가동 후 데이터 보존을 UART/LCD로 확인한다.
 * 구현 사진
 <img width="600" height="400" alt="K24C256" src="https://github.com/user-attachments/assets/19e7704c-dd37-47b5-a35d-39d4bba37158" />
 <br>
