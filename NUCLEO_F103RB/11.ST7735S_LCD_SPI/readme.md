@@ -187,8 +187,9 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Co
 
 
 #### 아래코드에서 수정 필요 
-원하는 함수 기능을 맟춰주기 위해서 
-LCD_DrawString(x, y, "출력할 문자열", 글자색, 배경색);  
+원하는 함수 기능을 맟춰주기 위해서  
+
+** LCD_DrawString(x, y, "출력할 문자열", 글자색, 배경색); ** 
 RGB → BGR로 컬러 순서 보정(MADCTL=0x68): LCD_DrawString의 색상값과 패널 실제 순서 불일치로 빨/파가 바뀌던 문제 해결.  
 INVON 활성화: ST7735 패널 구동 극성(인버전) 맞춤으로 휘도/대비·색감 안정화(OFF면 색 틀어짐·플리커).  
 
