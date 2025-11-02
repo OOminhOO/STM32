@@ -166,7 +166,10 @@ Open Associated Perspective 대화창에서 Yes 버튼을 클릭하면 Device Co
 ### 코드 작성 (기능 구현 코드)
 <details>
 <summary>펼치기/접기 코드</summary>
-#### 코드 특징:
+
+  
+  #### 코드 특징:  
+  
    * 완전한 ST7735S 초기화 시퀀스
    * 8x8 폰트 포함 (ASCII 32-126)
    * RGB565 컬러 지원
