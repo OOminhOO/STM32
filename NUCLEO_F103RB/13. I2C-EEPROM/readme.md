@@ -5,16 +5,22 @@
 
 ---
 ## 프로그램 목표
+<details>
+<summary>펼치기/접기 </summary>
+
 I²C EEPROM(K24C256)에 바이트·페이지 쓰기/읽기를 구현하고, ACK 폴링과 순차 읽기로 검증하여 전원 재가동 후 데이터 보존을 UART/LCD로 확인한다.
 * 구현 사진
 <img width="800" height="600" alt="I2C_EEPROM_003" src="https://github.com/user-attachments/assets/6f12cb52-ecb1-41d0-a5b5-b02cc4c5c4db" />
 <br>
 
-
+</details>
 
 ---
 
 ## I2C_EEPROM & NUCLEO_F103RB pin map
+<details>
+<summary>펼치기/접기 </summary>  
+	
 <img width="397" height="342" alt="I2C_EEPROM" src="https://github.com/user-attachments/assets/e3558c6c-2609-4840-b791-7248154ba2ff" />
 <br>
 
@@ -28,7 +34,7 @@ I²C EEPROM(K24C256)에 바이트·페이지 쓰기/읽기를 구현하고, ACK 
 
 ---  
 
-
+</details>
 
 
 
@@ -420,6 +426,10 @@ void EEPROM_Test(void)
 
 
 </details>
+
+  
+---  
+
 
 ### 2개의 Addredd 관련 이슈
 <details>
