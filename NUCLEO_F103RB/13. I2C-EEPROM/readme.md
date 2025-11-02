@@ -7,7 +7,7 @@
 ## 프로그램 목표
 I²C EEPROM(K24C256)에 바이트·페이지 쓰기/읽기를 구현하고, ACK 폴링과 순차 읽기로 검증하여 전원 재가동 후 데이터 보존을 UART/LCD로 확인한다.
 * 구현 사진
-<img width="600" height="400" alt="K24C256" src="https://github.com/user-attachments/assets/19e7704c-dd37-47b5-a35d-39d4bba37158" />
+<img width="800" height="600" alt="I2C_EEPROM_003" src="https://github.com/user-attachments/assets/6f12cb52-ecb1-41d0-a5b5-b02cc4c5c4db" />
 <br>
 
 
