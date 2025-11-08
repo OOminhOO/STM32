@@ -1,24 +1,20 @@
 # STM32
 ## NUCLEO_F103RB
- - [] 01.LED_Blink
- - [] 02.USART_Print
- - [] 03.EXTI
- - [] 04.TM_TimeBase
- - [] 05.ADC
- - [] 06.HC-SR04
- - [] 07.Buzzer
- - [] 08.CLCD
- - [] 09.ServoMotor
- - [] 11.LCD-SPI
- - [] 12.DHT11
- - [] 13.JoyStick
- - [] 14.ILI9341 - 터치/SDCard 미구현
- - [] 15.CDS_sensorx
- - [] 16.I2C-EEPROM
- - [] 17.MPU6050 - 동작시간이 길어지면 문제 발생.
- - [] 18.Rotary_Encoder
- - [] 19.SimpleFOC_BLDC - 저RPM만 가능 : 100mA
- - [] 20.VL53L0X - 정상 동작 안됨
- - [] 21.RTC
- - [완료] 22.I2C_EEPROM_GPIO
+- [완료] 01.LED_BLINK
+- [완료] 02.USART_Print
+- [완료] 03.EXTI
+- [완료] 04.TIM_TimeBase
+- [완료] 05.ADC_TemperatureSensor
+- [완료] 06.HC-SR04_ultrasonic_sensor
+- [완료] 07.MH-FMD_piezo_buzzer
+- [완료] 08.CLCD
+- [완료] 09.SG90 Servo Motor
+- [완료] 10.DHT11_Temperature & Humidity Sensor
+- [완료] 11.ST7735S_LCD_SPI
+- [완료] 12.JoyStick
+- [완료] 13.I2C-EEPROM
+- [완료] 14.multitask - README 파일 정리필요
+- [완료] 15.FREE RTOS ` README 파일 정리필요
+- [] 16. BT04-A_BLUETOOTH
+
 
