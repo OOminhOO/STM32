@@ -9,7 +9,6 @@
  - [] 07.Buzzer
  - [] 08.CLCD
  - [] 09.ServoMotor
- - [] 10.GM009605_LCD 
  - [] 11.LCD-SPI
  - [] 12.DHT11
  - [] 13.JoyStick
